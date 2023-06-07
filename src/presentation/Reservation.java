@@ -9,16 +9,21 @@ public class Reservation {
     private String phoneNumber;
     private LocalDate startDate;
     private LocalDate endDate;
+    private ArrayList<Integer> listChamber;
+    private int nbOccupants;
 
-    public Reservation(int reservationNumber, String lastName, String firstName, 
-                       String phoneNumber, LocalDate startDate, LocalDate endDate) {
-        this.reservationNumber = reservationNumber;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.phoneNumber = phoneNumber;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
+   public Reservation(int reservationNumber, String lastName, String firstName, String phoneNumber,
+			LocalDate startDate, LocalDate endDate, String categorie, ArrayList<Integer> listChamber, int nbOccupants) {
+		this.reservationNumber = reservationNumber;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.phoneNumber = phoneNumber;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.categorie = categorie;
+		this.listChamber = listChamber;
+		this.nbOccupants = nbOccupants;
+	}
 
     // Getters and Setters
     public int getReservationNumber() {

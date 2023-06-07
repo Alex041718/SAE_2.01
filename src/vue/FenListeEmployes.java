@@ -51,7 +51,23 @@ public class FenListeEmployes extends Stage {
 		TableColumn<Employe,Integer> colonne4 = new TableColumn<Employe,Integer>("Département");
 		colonne4.setCellValueFactory(new PropertyValueFactory<Employe, Integer>("dept"));
 		tableEmployes.getColumns().add(colonne4);
-				
+		
+		TableColumn<Employe,Integer> colonne6 = new TableColumn<Employe,Integer>("Nb d'occupant par chambre");
+		colonne4.setCellValueFactory(new PropertyValueFactory<Employe, Integer>("dept"));
+		tableEmployes.getColumns().add(colonne6);
+		
+		TableColumn<Employe,Integer> colonne7 = new TableColumn<Employe,Integer>("N° Client");
+		colonne4.setCellValueFactory(new PropertyValueFactory<Employe, Integer>("dept"));
+		tableEmployes.getColumns().add(colonne7);
+		
+		TableColumn<Employe,Integer> colonne8 = new TableColumn<Employe,Integer>("Nom client");
+		colonne4.setCellValueFactory(new PropertyValueFactory<Employe, Integer>("dept"));
+		tableEmployes.getColumns().add(colonne8);
+		
+		TableColumn<Employe,Integer> colonne9 = new TableColumn<Employe,Integer>("Prénom client");
+		colonne4.setCellValueFactory(new PropertyValueFactory<Employe, Integer>("dept"));
+		tableEmployes.getColumns().add(colonne9);
+		
 		tableEmployes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		
 		

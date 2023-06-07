@@ -108,8 +108,8 @@ public class FenListeEmployes extends Stage {
 				
 				Alert alertSuppression = new Alert(AlertType.CONFIRMATION,
 						"On supprime ?",
-						ButtonType.YES,
-						ButtonType.NO);
+						ButtonType.NO,
+						ButtonType.YES);
 				
 				alertSuppression.setTitle("Supression d'un employé");
 				

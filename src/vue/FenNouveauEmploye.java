@@ -8,7 +8,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+//coin
 import javafx.beans.binding.*;
 
 public class FenNouveauEmploye extends Stage {

@@ -1,6 +1,7 @@
 package presentation;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Reservation {
     private int reservationNumber;
@@ -9,6 +10,7 @@ public class Reservation {
     private String phoneNumber;
     private LocalDate startDate;
     private LocalDate endDate;
+    private String categorie;
     private ArrayList<Integer> listChamber;
     private int nbOccupants;
 

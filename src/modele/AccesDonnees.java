@@ -39,10 +39,10 @@ public class AccesDonnees {
 	
 	
 	// méthodes de mise à jour
-	static public void ajouterEmploye(Reservation r) {
+	static public void ajouterReservation(Reservation r) {
 		lesReservations.add(r);
 	}
-	static public void supprimerEmploye(Reservation r) {
+	static public void supprimerReservation(Reservation r) {
 		boolean trouve = false;
 		int i=0;
 		while (!trouve && i<lesReservations.size()) {
@@ -53,11 +53,11 @@ public class AccesDonnees {
 			i++;
 		}
 	}
-	static public void modifierEmploye(Reservation r) {
+	static public void modifierReservation(Reservation r) {
 		boolean trouve = false;
 		int i=0;
 		while (!trouve && i<lesReservations.size()) {
-			if (lesReservations.get(i).getReservationNumber()==e.getReservationNumber()){
+			if (lesReservations.get(i).getReservationNumber()==r.getReservationNumber()){
 				lesReservations.set(i, r);
 				trouve = true;
 			}

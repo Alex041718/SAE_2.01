@@ -1,5 +1,7 @@
 package vue;
 
+
+import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.ArrayList;
@@ -17,10 +19,10 @@ import javafx.stage.Stage;
 import presentation.*;
 
 public class FenListeReservation extends Stage {
-	static private ObservableList<Employe> lesEmployes = FXCollections.observableArrayList();
+	static private ObservableList<Reservation> lesReservations = FXCollections.observableArrayList();
 	// les composants de la fenetre
 	private AnchorPane  		racine			= new AnchorPane();
-	private TableView<Employe> 	tableEmployes	= new TableView<Employe>();
+	private TableView<Reservation> 	tableReservations	= new TableView<Reservation>();
 	private Button 				bnAjouter 		= new Button("Ajouter...");
 	private Button 				bnModifier 		= new Button("Modifier...");
 	private Button 				bnSupprimer 	= new Button("Supprimer");
@@ -39,23 +41,46 @@ public class FenListeReservation extends Stage {
 	// creation du Scene graph
 	private Parent creerContenu() {
 			
-		TableColumn<Employe,Integer> colonne1 = new TableColumn<Employe,Integer>("Matricule");
-		colonne1.setCellValueFactory(new PropertyValueFactory<Employe,Integer>("matricule"));	
-		tableEmployes.getColumns().add(colonne1);
-		TableColumn<Employe, String> colonne2 = new TableColumn<Employe,String>("Nom");
-		colonne2.setCellValueFactory(new PropertyValueFactory<Employe, String>("nom"));
-		tableEmployes.getColumns().add(colonne2);
-		TableColumn<Employe, String> colonne3 = new TableColumn<Employe,String>("Poste");
-		colonne3.setCellValueFactory(new PropertyValueFactory<Employe, String>("poste"));
-		tableEmployes.getColumns().add(colonne3);
-		TableColumn<Employe,Integer> colonne4 = new TableColumn<Employe,Integer>("Département");
-		colonne4.setCellValueFactory(new PropertyValueFactory<Employe, Integer>("dept"));
-		tableEmployes.getColumns().add(colonne4);
+		TableColumn<Reservation,Integer> colonne1 = new TableColumn<Reservation,Integer>("N° de réservation");
+		colonne1.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("reservationNumber"));	
+		tableReservations.getColumns().add(colonne1);
+		
+		TableColumn<Reservation, String> colonne2 = new TableColumn<Reservation,String>("Nom");
+		colonne2.setCellValueFactory(new PropertyValueFactory<Reservation, String>("lastName"));
+		tableReservations.getColumns().add(colonne2);
+		
+		TableColumn<Reservation, String> colonne3 = new TableColumn<Reservation,String>("Prenom");
+		colonne3.setCellValueFactory(new PropertyValueFactory<Reservation, String>("firstName"));
+		tableReservations.getColumns().add(colonne3);
+		
+		TableColumn<Reservation,Integer> colonne4 = new TableColumn<Reservation,Integer>("N° de téléphone");
+		colonne4.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("phoneNumber"));
+		tableReservations.getColumns().add(colonne4);
+		
+		TableColumn<Reservation,LocalDate> colonne5 = new TableColumn<Reservation,LocalDate>("Début de période");
+		colonne5.setCellValueFactory(new PropertyValueFactory<Reservation, LocalDate>("startDate"));
+		tableReservations.getColumns().add(colonne5);
+		
+		TableColumn<Reservation,LocalDate> colonne6 = new TableColumn<Reservation,LocalDate>("Fin de période");
+		colonne6.setCellValueFactory(new PropertyValueFactory<Reservation, LocalDate>("endDate"));
+		tableReservations.getColumns().add(colonne6);
+		
+		TableColumn<Reservation, String> colonne7 = new TableColumn<Reservation,String>("Catégorie");
+		colonne7.setCellValueFactory(new PropertyValueFactory<Reservation, String>("categorie"));
+		tableReservations.getColumns().add(colonne7);
+		
+		TableColumn<Reservation, ArrayList<Integer>> colonne8 = new TableColumn<Reservation,ArrayList<Integer>>("Liste des chambres");
+		colonne8.setCellValueFactory(new PropertyValueFactory<Reservation, ArrayList<Integer>>("listChamber"));
+		tableReservations.getColumns().add(colonne8);
+		
+		TableColumn<Reservation,Integer> colonne9 = new TableColumn<Reservation,Integer>("N° d'occupants");
+		colonne9.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("nbOccupants"));
+		tableReservations.getColumns().add(colonne9);
 				
-		tableEmployes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+		tableReservations.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		
 		
-		BooleanBinding rien = Bindings.equal(tableEmployes.getSelectionModel().selectedIndexProperty(), -1);
+		BooleanBinding rien = Bindings.equal(tableReservations.getSelectionModel().selectedIndexProperty(), -1);
 		
 		bnAjouter.setPrefWidth(100);
 		
@@ -65,10 +90,10 @@ public class FenListeReservation extends Stage {
 
 		bnFermer.setPrefWidth(100);
 
-		AnchorPane.setTopAnchor(tableEmployes, 10.0);
-		AnchorPane.setLeftAnchor(tableEmployes, 10.0);
-		AnchorPane.setRightAnchor(tableEmployes, 120.0);
-		AnchorPane.setBottomAnchor(tableEmployes, 10.0);
+		AnchorPane.setTopAnchor(tableReservations, 10.0);
+		AnchorPane.setLeftAnchor(tableReservations, 10.0);
+		AnchorPane.setRightAnchor(tableReservations, 120.0);
+		AnchorPane.setBottomAnchor(tableReservations, 10.0);
 		AnchorPane.setTopAnchor(bnAjouter, 30.0);
 		AnchorPane.setRightAnchor(bnAjouter, 10.0);
 		AnchorPane.setTopAnchor(bnModifier, 80.0);
@@ -77,13 +102,13 @@ public class FenListeReservation extends Stage {
 		AnchorPane.setRightAnchor(bnSupprimer, 10.0);
 		AnchorPane.setBottomAnchor(bnFermer, 10.0);
 		AnchorPane.setRightAnchor(bnFermer, 10.0);
-		racine.getChildren().addAll(tableEmployes, bnAjouter, bnModifier, bnSupprimer, bnFermer);
+		racine.getChildren().addAll(tableReservations, bnAjouter, bnModifier, bnSupprimer, bnFermer);
 		
 		// Button Action
 		
 		bnFermer.setOnAction(e -> System.exit(0));
 		
-		BooleanBinding nothing = Bindings.equal(-1,tableEmployes.getSelectionModel().selectedIndexProperty());
+		BooleanBinding nothing = Bindings.equal(-1,tableReservations.getSelectionModel().selectedIndexProperty());
 		
 		bnSupprimer.disableProperty().bind(Bindings.when(nothing).then(true).otherwise(false));
 		bnModifier.disableProperty().bind(Bindings.when(nothing).then(true).otherwise(false));
@@ -100,45 +125,45 @@ public class FenListeReservation extends Stage {
 				Optional<ButtonType> result = alertSuppression.showAndWait();
 				
 				if (result.isPresent() && result.get() == ButtonType.YES) {
-					Principale.supprimerEmploye(tableEmployes.getSelectionModel().getSelectedItem());
+					Principale.supprimerReservation(tableReservations.getSelectionModel().getSelectedItem());
 				}
 				
 				}
 				
 		);
 		
-		bnAjouter.setOnAction(e -> Principale.ouvrirNouvelEmploye());
+		bnAjouter.setOnAction(e -> Principale.ouvrirNouvelReservation());
 		
-		bnModifier.setOnAction(e -> Principale.ouvrirDetailEmploye(tableEmployes.getSelectionModel().getSelectedItem()));
+		bnModifier.setOnAction(e -> Principale.ouvrirDetailReservation(tableReservations.getSelectionModel().getSelectedItem()));
 		
 		
 		return racine;
 	}
 	
-	public void init(ArrayList<Employe> liste) {
-		lesEmployes.clear();
+	public void init(ArrayList<Reservation> liste) {
+		lesReservations.clear();
 		for (int i=0; i<liste.size() ; i++) {
-			lesEmployes.add(liste.get(i));
+			lesReservations.add(liste.get(i));
 		}
-		tableEmployes.setItems(lesEmployes);
+		tableReservations.setItems(lesReservations);
 
 	}
-	public void ajouterEmploye(Employe e) {
-		lesEmployes.add(e);
+	public void ajouterReservation(Reservation e) {
+		lesReservations.add(e);
 	}
-	public void modifierEmploye(Employe e) {
+	public void modifierReservation(Reservation e) {
 		boolean trouve = false;
 		int i=0;
-		while (!trouve && i<lesEmployes.size()) {
-			if (lesEmployes.get(i).getMatricule()==e.getMatricule()){
-				lesEmployes.set(i, e);
+		while (!trouve && i<lesReservations.size()) {
+			if (lesReservations.get(i).getReservationNumber()==e.getReservationNumber()){
+				lesReservations.set(i, e);
 				trouve = true;
 			}
 			i++;
 		}
 	}
-	public void supprimerEmploye(Employe e) {
-		lesEmployes.remove(e);
+	public void supprimerReservation(Reservation e) {
+		lesReservations.remove(e);
 	}
 	
 	

@@ -17,7 +17,7 @@ public class Principale extends Application{
 		AccesDonnees.connexion();
 		fNouvEmp.initModality(Modality.APPLICATION_MODAL);
 		fDetailEmp.initModality(Modality.APPLICATION_MODAL);
-		fListeRes.init(AccesDonnees.getLesEmployes());
+		fListeRes.init(AccesDonnees.getLesReservationNumber());
 		fListeRes.show();
 	} 
 	
@@ -27,11 +27,11 @@ public class Principale extends Application{
 	
 	// gestion des fenêtres
 	static public void ouvrirNouvelEmploye() {
-		fNouvEmp.init(AccesDonnees.getLesSuperieurs(), AccesDonnees.getLesDepartements());
+		fNouvEmp.init(AccesDonnees.getLesReservationNumber());
 		fNouvEmp.show();
 	}
-	static public void ouvrirDetailEmploye(Employe e) {
-		fDetailEmp.init(AccesDonnees.getLesSuperieurs(), AccesDonnees.getLesDepartements(), e.getMatricule(), e.getNom(), e.getPoste(), e.getSuperieur(),e.getEmbauche(),e.getSalaire(), e.getPrime(), e.getDept());
+	static public void ouvrirDetailEmploye(Reservation r) {
+		fDetailEmp.init(AccesDonnees.getLesReservationNumber(), r.getReservationNumber(), r.getLastName(), r.getFirstName(), r.getPhoneNumber(),r.getStartDate(), r.getEndDate(), r.getCategorie(), r.getListChamber(), r.getNbOccupants());
 		fDetailEmp.show();
 	}
 	

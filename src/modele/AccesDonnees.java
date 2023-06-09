@@ -27,16 +27,16 @@ public class AccesDonnees {
 	static public ArrayList<Reservation> getLesReservations() {
 		return lesReservations;
 	}
-	/*
-	static public ArrayList<Integer> getLesSuperieurs() {
-		// fournit la liste des matricules
-		ArrayList<Integer> lesSuperieurs = new ArrayList<Integer>();;
+	
+	static public ArrayList<Integer> getLesReservationNumber() {
+		// fournit la liste des ReservationNumber
+		ArrayList<Integer> lesReservationNumber = new ArrayList<Integer>();;
 		for(int i=0 ; i<lesReservations.size() ; i++) {
-			lesSuperieurs.add(lesReservations.get(i).getReservationNumber());
+			lesReservationNumber.add(lesReservations.get(i).getReservationNumber());
 		}
-		return lesSuperieurs;
+		return lesReservationNumber;
 	}
-	*/
+	
 	
 	// méthodes de mise à jour
 	static public void ajouterEmploye(Reservation r) {

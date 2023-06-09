@@ -74,7 +74,7 @@ public class FenDetailEmploye extends Stage {
 		return racine;
 	}
 	
-	public void init(ArrayList<Integer> lesSup, ArrayList<Integer> lesDep, int mat, String nom, String poste, int sup, String emb, float sal, float prime, int dep) {
+	public void init(ArrayList<Integer> les, int mat, String nom, String poste, int sup, String emb, float sal, float prime, int dep) {
 		// A compléter
 	}
 

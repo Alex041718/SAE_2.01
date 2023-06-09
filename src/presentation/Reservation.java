@@ -72,7 +72,31 @@ public class Reservation {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
+	public ArrayList<Integer> getListChamber() {
+		return listChamber;
+	}
+
+	public void setListChamber(ArrayList<Integer> listChamber) {
+		this.listChamber = listChamber;
+	}
+
+	public int getNbOccupants() {
+		return nbOccupants;
+	}
+
+	public void setNbOccupants(int nbOccupants) {
+		this.nbOccupants = nbOccupants;
+	}
+
+	public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
     

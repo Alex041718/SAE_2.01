@@ -8,15 +8,23 @@ import modele.*;
 import vue.*;
 
 public class Principale extends Application{
-	static private FenNouveauReservation fNouvRes = new FenNouveauReservation();
+	
 	static private FenDetailReservation fDetailRes = new FenDetailReservation();
 	static private FenListeReservation fListeRes = new FenListeReservation();
 	
 	public void start(Stage f) throws Exception {
+		
 		AccesDonnees.connexion();
-		fNouvRes.initModality(Modality.APPLICATION_MODAL);
+		
 		fDetailRes.initModality(Modality.APPLICATION_MODAL);
+		
+		
 		fListeRes.init(AccesDonnees.getLesReservations());
+		
+		
+		//fListeRes.init(AccesDonnees.searchReservations("Dupont", null, null));
+		
+		
 		fListeRes.show();
 	} 
 	
@@ -25,6 +33,7 @@ public class Principale extends Application{
 	}
 	
 	// gestion des fenêtres
+	/*
 	static public void ouvrirNouvelReservation() {
 		fNouvRes.init(AccesDonnees.getLesReservationNumber());
 		fNouvRes.show();
@@ -33,6 +42,7 @@ public class Principale extends Application{
 		fDetailRes.init(AccesDonnees.getLesReservationNumber(), r.getReservationNumber(), r.getLastName(), r.getFirstName(), r.getPhoneNumber(),r.getStartDate(), r.getEndDate(), r.getCategorie(), r.getListChamber(), r.getNbOccupants());
 		fDetailRes.show();
 	}
+	*/
 	
 	// gestion des données : les modifications
 	static public void ajouterReservation(Reservation e) {
@@ -55,11 +65,5 @@ public class Principale extends Application{
 		AccesDonnees.supprimerReservation(e);
 	}
 
-	// gestion des données : les consultations
-	static public ArrayList<Integer> getLesSuperieurs(){
-		return AccesDonnees.getLesSuperieurs();
-	}
-	static public ArrayList<Integer> getLesDepartements(){
-		return AccesDonnees.getLesDepartements();
-	}
+	
 }

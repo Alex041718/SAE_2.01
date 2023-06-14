@@ -13,21 +13,33 @@ public class Reservation {
     private String categorie;
     private ArrayList<Integer> listChamber;
     private int nbOccupants;
+    private String state;
 
-   public Reservation(int reservationNumber, String lastName, String firstName, String phoneNumber,
-			LocalDate startDate, LocalDate endDate, String categorie, ArrayList<Integer> listChamber, int nbOccupants) {
-		this.reservationNumber = reservationNumber;
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.phoneNumber = phoneNumber;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.categorie = categorie;
-		this.listChamber = listChamber;
-		this.nbOccupants = nbOccupants;
+   
+    public Reservation(int reservationNumber, String lastName, String firstName, String phoneNumber, LocalDate startDate,
+		LocalDate endDate, String categorie, ArrayList<Integer> listChamber, int nbOccupants, String state) {
+	super();
+	this.reservationNumber = reservationNumber;
+	this.lastName = lastName;
+	this.firstName = firstName;
+	this.phoneNumber = phoneNumber;
+	this.startDate = startDate;
+	this.endDate = endDate;
+	this.categorie = categorie;
+	this.listChamber = listChamber;
+	this.nbOccupants = nbOccupants;
+	this.state = state;
+}
+
+	public String getState() {
+		return state;
 	}
 
-    // Getters and Setters
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	// Getters and Setters
     public int getReservationNumber() {
         return reservationNumber;
     }
